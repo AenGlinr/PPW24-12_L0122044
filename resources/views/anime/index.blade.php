@@ -1,77 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-        }
-
-        .container {
-            margin-top: 50px;
-        }
-
-        table {
-            width: 80%;
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 10px;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #3498db;
-            color: #fff;
-        }
-
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container">
-        <h1>Anime List</h1>
-        <a href="{{ route('home') }}">Home</a> | <a href="{{ route('anime.create') }}">Add New Anime</a>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Genre</th>
-                    <th>Release Date</th>
-                    <th>Rating</th>
-                    <th>Characters</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($animes as $anime)
-                    <tr>
-                        <td>{{ $anime->id }}</td>
-                        <td>{{ $anime->title }}</td>
-                        <td>{{ $anime->description }}</td>
-                        <td>{{ $anime->genre }}</td>
-                        <td>{{ $anime->release_date }}</td>
-                        <td>{{ $anime->rating }}</td>
-                        <td><a href="{{ route('anime.characters', $anime) }}">View Characters</a></td>
+<body class="bg-gradient-to-br from-blue-200 to-green-200 font-sans text-gray-900">
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold mb-8 text-center text-indigo-800">Anime List</h1>
+
+        <div class="mb-4 text-center">
+            <a href="{{ route('home') }}"
+                class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg mr-2 focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                Home
+            </a>
+            <a href="{{ route('anime.create') }}"
+                class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                Add New Anime
+            </a>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="table-auto border-collapse w-full">
+                <thead>
+                    <tr class="bg-blue-500 text-white">
+                        <th class="py-2 px-4">ID</th>
+                        <th class="py-2 px-4">Title</th>
+                        <th class="py-2 px-4">Description</th>
+                        <th class="py-2 px-4">Genre</th>
+                        <th class="py-2 px-4">Release Date</th>
+                        <th class="py-2 px-4">Rating</th>
+                        <th class="py-2 px-4">Characters</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($animes as $anime)
+                        <tr class="border-b border-gray-200">
+                            <td class="py-2 px-4">{{ $anime->id }}</td>
+                            <td class="py-2 px-4">{{ $anime->title }}</td>
+                            <td class="py-2 px-4">{{ $anime->description }}</td>
+                            <td class="py-2 px-4">{{ $anime->genre }}</td>
+                            <td class="py-2 px-4">{{ $anime->release_date }}</td>
+                            <td class="py-2 px-4">{{ $anime->rating }}</td>
+                            <td class="py-2 px-4"><a href="{{ route('anime.characters', $anime) }}"
+                                    class="text-indigo-600 hover:underline">View Characters</a></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 

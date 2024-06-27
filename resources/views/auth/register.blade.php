@@ -5,91 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-        }
-
-        .container {
-            margin-top: 50px;
-        }
-
-        form {
-            width: 50%;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-        }
-
-        .success-message {
-            color: #4CAF50;
-            margin-top: 10px;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container">
-        <h2>Register</h2>
+<body class="bg-gradient-to-br from-blue-200 to-green-200 font-sans text-gray-900">
+    <div class="container mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-8 text-center text-indigo-800">Register</h2>
 
         @if (session('status'))
-            <div class="success-message">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-8"
+                role="alert">
                 {{ session('status') }}
             </div>
         @endif
 
-        <form action="{{ route('register') }}" method="POST">
+        <form action="{{ route('register') }}" method="POST"
+            class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md mx-auto">
             @csrf
 
-            <div>
-                <input type="text" id="username" name="username" placeholder="Username"
-                    value="{{ old('username') }}" required autofocus>
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                <input type="text" id="username" name="username"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Username" value="{{ old('username') }}" required autofocus>
             </div>
 
-            <div>
-                <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}"
-                    required>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <input type="email" id="email" name="email"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Email" value="{{ old('email') }}" required>
             </div>
 
-            <div>
-                <input type="password" id="password" name="password" placeholder="Password" required>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <input type="password" id="password" name="password"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Password" required>
             </div>
 
-            <div>
+            <div class="mb-6">
+                <label for="password_confirmation" class="block text-gray-700 text-sm font-bold mb-2">Confirm
+                    Password</label>
                 <input type="password" id="password_confirmation" name="password_confirmation"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Confirm Password" required>
             </div>
 
-            <div>
-                <button type="submit">Register</button>
+            <div class="flex items-center justify-center">
+                <button type="submit"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Register
+                </button>
             </div>
         </form>
     </div>

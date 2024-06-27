@@ -1,59 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Anime</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-        }
-
-        .container {
-            margin-top: 50px;
-        }
-
-        form {
-            width: 50%;
-            margin: 0 auto;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container">
-        <h1>Add New Anime</h1>
-        <form action="{{ route('anime.store') }}" method="POST">
+<body class="bg-gradient-to-br from-blue-200 to-green-200 font-sans text-gray-900">
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold mb-8 text-center text-indigo-800">Add New Anime</h1>
+
+        <form action="{{ route('anime.store') }}" method="POST"
+            class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
             @csrf
-            <input type="text" name="title" placeholder="Title" required>
-            <textarea name="description" placeholder="Description" required></textarea>
-            <input type="text" name="genre" placeholder="Genre" required>
-            <input type="date" name="release_date" placeholder="Release Date" required>
-            <input type="text" name="rating" placeholder="Rating" required>
-            <button type="submit">Add Anime</button>
+
+            <div class="mb-4">
+                <input type="text" name="title" placeholder="Title"
+                    class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    required>
+            </div>
+
+            <div class="mb-4">
+                <textarea name="description" placeholder="Description"
+                    class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    rows="4" required></textarea>
+            </div>
+
+            <div class="mb-4">
+                <input type="text" name="genre" placeholder="Genre"
+                    class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    required>
+            </div>
+
+            <div class="mb-4">
+                <input type="date" name="release_date" placeholder="Release Date"
+                    class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    required>
+            </div>
+
+            <div class="mb-4">
+                <input type="text" name="rating" placeholder="Rating"
+                    class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    required>
+            </div>
+
+            <div class="text-center">
+                <button type="submit"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                    Add Anime
+                </button>
+            </div>
         </form>
     </div>
 </body>

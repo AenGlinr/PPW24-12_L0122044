@@ -1,71 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Characters - {{ $anime->title }}</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-        }
-
-        .container {
-            margin-top: 50px;
-        }
-
-        table {
-            width: 80%;
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 10px;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #3498db;
-            color: #fff;
-        }
-
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container">
-        <h1>Characters - {{ $anime->title }}</h1>
-        <a href="{{ route('home') }}">Home</a> | <a href="{{ route('anime.create') }}">Add New Anime</a>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Role</th>
-                    <th>Voice Actor</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($anime->characters as $character)
-                    <tr>
-                        <td>{{ $character->id }}</td>
-                        <td>{{ $character->name }}</td>
-                        <td>{{ $character->role }}</td>
-                        <td>{{ $character->voice_actor }}</td>
+<body class="bg-gradient-to-br from-blue-200 to-green-200 font-sans text-gray-900">
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold mb-8 text-center text-indigo-800">Characters - {{ $anime->title }}</h1>
+
+        <div class="mb-8 flex justify-center">
+            <a href="{{ route('home') }}"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg mr-4 focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                Home
+            </a>
+            <a href="{{ route('anime.create') }}"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                Add New Anime
+            </a>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full bg-white shadow-md rounded-lg border-collapse">
+                <thead>
+                    <tr class="bg-indigo-600 text-white">
+                        <th class="py-3 px-6 text-left">ID</th>
+                        <th class="py-3 px-6 text-left">Name</th>
+                        <th class="py-3 px-6 text-left">Role</th>
+                        <th class="py-3 px-6 text-left">Voice Actor</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="text-gray-700">
+                    @foreach ($anime->characters as $character)
+                        <tr class="border-b border-gray-200">
+                            <td class="py-3 px-6 text-left">{{ $character->id }}</td>
+                            <td class="py-3 px-6 text-left">{{ $character->name }}</td>
+                            <td class="py-3 px-6 text-left">{{ $character->role }}</td>
+                            <td class="py-3 px-6 text-left">{{ $character->voice_actor }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 
